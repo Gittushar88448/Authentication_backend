@@ -8,10 +8,10 @@ const PORT = process.env.PORT || 4000;
 // adding middleware
 app.use(express.json());
 
-// const routerAuth = require('./router/user');
+const routerAuth = require('./router/user');
 
-// // mounting
-// app.use('/api/v1' , routerAuth);
+// mounting
+app.use('/api/v1' , routerAuth);
 
 const dbConnect = require('./config/database');
 dbConnect();
