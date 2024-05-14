@@ -18,8 +18,25 @@ exports.signUp = async(req , res) =>{
                 message: "user is already exist"
             })
         }
+        let hashedPassword;
+        try{
+            hashedPassword = await bcrypt.hash(password, 10);
+        }
+        catch(err){
+            return res.status(500).json({
+                success: false,
+                message: "internal server error"
+            })
+        }
+
+        
     }
     catch(error){
 
+        res.status(500).json({
+            success: false,
+            message: "user is not get registered"
+        })
     }
+
 }
