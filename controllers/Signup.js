@@ -18,6 +18,9 @@ exports.signUp = async(req , res) =>{
                 message: "user is already exist"
             })
         }
+
+        // hashing using  bcrypt library
+
         let hashedPassword;
         try{
             hashedPassword = await bcrypt.hash(password, 10);
@@ -29,6 +32,8 @@ exports.signUp = async(req , res) =>{
             })
         }
 
+        // create a database entry using create method
+        
         try{
             const user = User.create({
                 name , password:hashedPassword , email , role
@@ -46,7 +51,6 @@ exports.signUp = async(req , res) =>{
             })
         }
 
-        
     }
     catch(error){
 
