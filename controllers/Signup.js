@@ -29,6 +29,23 @@ exports.signUp = async(req , res) =>{
             })
         }
 
+        try{
+            const user = User.create({
+                name , password:hashedPassword , email , role
+            });
+            res.status(200).json({
+                success: true ,
+                message: "user registered successfully"
+            })
+        }
+        catch(err){
+            console.error(err);
+            return res.status(500).json({
+                success: false,
+                message: "internal server error while created user"
+            })
+        }
+
         
     }
     catch(error){
