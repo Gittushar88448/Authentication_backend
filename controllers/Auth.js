@@ -76,6 +76,13 @@ exports.login = async(req , res) =>{
         // check for the regestered user
         const user = await findOne({email});
 
+        // if user is not regestered
+        if(!user){
+            return res.status(401).json({
+                success: false,
+                message: "user is not regestered"
+            })
+        }        
     }
     catch(error){
 
