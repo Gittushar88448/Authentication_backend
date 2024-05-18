@@ -73,6 +73,9 @@ exports.login = async(req , res) =>{
                 message: "please enter the all the details"
             })
         }
+        // check for the regestered user
+        const user = await findOne({email});
+
     }
     catch(error){
 
